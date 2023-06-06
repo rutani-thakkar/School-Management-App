@@ -19,7 +19,7 @@ class SchoolsController < ApplicationController
     if @school.save
       redirect_to @school, notice: 'School created successfully!'
     else
-      render :new, notice: 'Failed to create user.'
+      render :new
     end
   end
 

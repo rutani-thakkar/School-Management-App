@@ -13,7 +13,7 @@
   <% end %>
   <% if current_user.student? %>
     <td>
-      <% if current_user.enrollments.pluck(:batch_id).include?(batch.id)%>
+      <% if is_user_enrolled?(current_user, batch) %>
         <%= current_user.enrollments.find_by(batch_id: batch.id).status %>
       <% else %>
         <%= link_to 'Enroll', enroll_batch_batch_path(batch, course_id: @course.id), method: :put %>

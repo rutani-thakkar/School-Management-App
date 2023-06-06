@@ -17,7 +17,7 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if @course.save!
-      redirect_to school_path(@school), notice: 'course created successfully!'
+      redirect_to school_path(@school), notice: 'Course created successfully!'
     else
       render :new
     end
@@ -30,7 +30,7 @@ class CoursesController < ApplicationController
   def update
     @course = Course.find(params[:id])
     if @course.update(course_params)
-      redirect_to course_path(@course), notice: 'course ,updated successfully!'
+      redirect_to course_path(@course), notice: 'Course ,updated successfully!'
     else
       render :edit
     end

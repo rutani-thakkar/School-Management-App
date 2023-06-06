@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "home#index" 
+  root to: "home#index"
 
   resources :schools do
     resources :courses, shallow: true do
@@ -8,8 +8,6 @@ Rails.application.routes.draw do
         member do
           put 'enroll_batch'
           put 'discard_enrolled_batch'
-          # put '/enroll_batch', to: 'batches#enroll_batch', as: 'enroll', on: :member
-          # put '/discard_enrolled_batch/:batch_id', to: 'batches#discard_enrolled_batch', as: 'discard_enrolled', on: :member
         end
       end
     end

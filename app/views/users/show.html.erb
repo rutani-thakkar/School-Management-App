@@ -27,28 +27,7 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @batches.each do |batch| %>
-      <tr>
-        <td><%= batch.name %></td>
-        <td><%= batch.description %></td>
-        <td><%= batch.capacity %></td>
-        <td><%= batch.start_date %></td>
-        <td><%= batch.end_date %></td>
-        <td><%= link_to 'Show', batch %></td>
-         <td>
-         <%unless @user.school_admin? %>
-            <% if @user.enrollments.pluck(:batch_id).include?(batch.id)%>
-                <%= @user.enrollments.find_by(batch_id: batch.id).status == 'Accepted' ?  'Enrolled' : @user.enrollments.find_by(batch_id: batch.id).status %>
-            <% else %>
-                <% if can?(:add_student_to_batch, User)%>
-                <%= link_to 'Add to batch', add_student_to_batch_user_path(@user, batch), method: :patch %>
-                <% end %>
-            <% end %>
-          <% end %>
-	    </td>
-      </tr>
-    <% end %>
+    <%= render partial:'batch', collection: @batches %>
   </tbody>
 </table>

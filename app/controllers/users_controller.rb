@@ -1,17 +1,13 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy, :add_student_to_batch]
 
-  def index
-    @students = User.where(role: 'student')
-  end
-
   def students_list
-    @students = User.where(role: 'student')
+    @students = User.where(role: User::STUDENT)
     authorize! :students_list, User
   end
 
   def school_admin_list
-      @school_admins = User.where(role: 'school-admin')
+      @school_admins = User.where(role: User::SCHOOL_ADMIN)
       authorize! :school_admin_list, User
     end
 
@@ -30,7 +26,7 @@ class UsersController < ApplicationController
     authorize! :create_student, User
     @user = User.new(user_params)
     @user.school = current_user.school
-    @user.role = 'student'
+    @user.role = User::STUDENT
     if @user.save
       redirect_to students_list_users_path, notice: 'User created successfully!'
     else
@@ -41,7 +37,7 @@ class UsersController < ApplicationController
   def create_school_admin
       authorize! :create_school_admin, User
       @school_admin = User.new(school_admin_params)
-      @school_admin.role = 'school-admin'
+      @school_admin.role = User::SCHOOL_ADMIN
       if @school_admin.save
         redirect_to school_admin_list_users_path, notice: 'School Admin created successfully!'
       else

@@ -1,0 +1,7 @@
+<tr>
+  <td><%= link_to enrollment.student.first_name, user_path(enrollment.student) %></td>
+  <td><%= link_to enrollment.batch.name, batch_path(enrollment.batch, course_id: enrollment.batch.course.id) %></td>
+  <td><%= enrollment.message %></td>
+  <td><%= link_to 'Accept', enrollment_accept_request_path(enrollment), method: :patch %></td>
+  <td><%= link_to 'Denied', enrollment_denied_request_path(enrollment), method: :patch %></td>
+</tr>

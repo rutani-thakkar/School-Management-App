@@ -1,9 +1,8 @@
 
 <%= form_with model: @school, class: 'bootstrap-form' do |form| %>
 <%= render "shared/error", model_name: @school %>
- <%= render "devise/shared/error_messages", resource: @school %>
 
-   <div class="form-group">
+  <div class="form-group">
     <%= form.label :name %>
     <%= form.text_field :name, class: 'form-control' %>
   </div>

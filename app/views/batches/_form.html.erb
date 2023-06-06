@@ -1,14 +1,5 @@
 <%= form_with(model: @batch, class: 'bootstrap-form', url: action) do |form| %>
-  <% if @batch.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@batch.errors.count, "error") %> prohibited this batch from being saved:</h2>
-      <ul>
-      <% @batch.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/error", model_name: @batch %>
 
   <div class="form-group">
     <%= form.label :name %>

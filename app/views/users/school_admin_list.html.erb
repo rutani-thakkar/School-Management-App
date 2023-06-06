@@ -10,19 +10,8 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @school_admins.each do |school_admin| %>
-      <tr>
-        <td><%= school_admin.first_name %></td>
-        <td><%= school_admin.last_name %></td>
-        <td><%= school_admin.email %></td>
-        <td><%= school_admin.phone %></td>
-        <td><%= link_to 'Show', school_admin %></td>
-        <td><%#= link_to 'Edit', edit_school_path(school) %></td>
-        <td><%#= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <%= render partial: 'school_admin', collection: @school_admins %>
   </tbody>
 </table>
 <% if can?(:create_school_admin, User)%>

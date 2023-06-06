@@ -26,9 +26,9 @@
     - Can approve or deny student requests
 8. Student:
     - Can send request for batch enroll
-    - Can check other user progress 
+    - Can check other student's progress
 9. First time super-admin can only login as other user won't present.
-10. Super admin will create studnet and school-admin, after that they can login with system
+10. Super admin will create student and school-admin, after that they can login with system
 11. To run test suite use command: bundle exec rspec spec
 12. Added a strong paramter for injection Attacks
 

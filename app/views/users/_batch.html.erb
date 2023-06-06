@@ -1,0 +1,19 @@
+<tr>
+  <td><%= batch.name %></td>
+  <td><%= batch.description %></td>
+  <td><%= batch.capacity %></td>
+  <td><%= batch.start_date %></td>
+  <td><%= batch.end_date %></td>
+  <td><%= link_to 'Show', batch %></td>
+  <td>
+    <%unless @user.school_admin? %>
+      <% if is_user_enrolled?(@user, batch)%>
+        <%= user_enrollment_status(@user, batch) %>
+      <% else %>
+        <% if can?(:add_student_to_batch, User)%>
+          <%= link_to 'Add to batch', add_student_to_batch_user_path(@user, batch), method: :patch %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </td>
+</tr>
